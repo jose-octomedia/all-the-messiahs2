@@ -334,9 +334,10 @@ Webflow.push(function (){
             });
             var zoom_offset = zoom_trigger.offset();
             
+            var offset_pixels = (is_mobile) ? 40 : -70;
             $(".zoom-disclaimer").css({
-                top: (zoom_offset.top - 110) + 'px',
-                left: (zoom_offset.left - ($(".zoom-disclaimer").width()/2) + -91) + 'px'
+                top: (zoom_offset.top + offset_pixels) + 'px',
+                left: 0
             });
             $(".zoom-disclaimer").removeClass('hidden');
             setTimeout(function(){
@@ -359,8 +360,8 @@ Webflow.push(function (){
             var offset = $(".zoom-col");
             offset = offset.offset();
             $(".full-page-disclaimer").css({
-                top: (offset.top - 160) + 'px',
-                left: (offset.left - ($(".full-page-disclaimer").width()/2) + 12) + 'px'
+                top: (offset.top - 50) + 'px',
+                left: 0
             });
             $(".full-page-disclaimer").removeClass('hidden');
             setTimeout(function(){
@@ -387,38 +388,39 @@ Webflow.push(function (){
         $(".info-container").fadeOut(); 
     });
     
-
-    $(".details-trigger").click(function(){
-        var current_position = $(this).data('current-position');
-        var _this = $(this);
-        if(current_position == 'down'){
-            $(".arrow-up-block").fadeIn(function(){
-                _this.find('img').prop('src', 'images/icon-darrow-down.png');
-                _this.data('current-position', 'up');
-            });  
-        }else{
-            $(".arrow-up-block").fadeOut(function(){
-                _this.find('img').prop('src', 'images/icon-darrow-up.png');
-                _this.data('current-position', 'down');
-            });  
-        }
-    });
     
     if(is_mobile){
+        $(".details-trigger").click(function(){
+            var current_position = $(this).data('current-position');
+            var _this = $(this);
+            if(current_position == 'down'){
+                $(".arrow-up-block").fadeIn(function(){
+                    _this.find('img').prop('src', 'images/icon-darrow-down.png');
+                    _this.data('current-position', 'up');
+                });  
+            }else{
+                $(".arrow-up-block").fadeOut(function(){
+                    _this.find('img').prop('src', 'images/icon-darrow-up.png');
+                    _this.data('current-position', 'down');
+                });  
+            }
+        });
+        
         $(".arrow-up-block").fadeOut();
-    }else{
-        $(".details-trigger").trigger('click');
     }
 
     if(Modernizr.fullscreen){
+        const elem = document.getElementById('full_container');
         $(".fullscreen-trigger").click(function(){
             if(!screenfull.isFullscreen){
                 $(".fullscreen-trigger").css('background', '#5dff00');
             }else{
                 $(".fullscreen-trigger").css('background', '#ff9500');
             }
-            screenfull.toggle();
+            screenfull.toggle(elem);
         });
+    }else{
+        $(".fullscreen-trigger").hide();
     }
     
     

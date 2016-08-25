@@ -4,6 +4,8 @@ body {
   color: #333;
   font-size: 14px;
   line-height: 20px;
+  width: 100%;
+  height: 100%;
 }
 
 .book-container {
@@ -138,13 +140,25 @@ body {
 .zoom-disclaimer{
   position: absolute;
   top: 0;
-  left: center;
+  left: 0;
+  z-index: 800;
+  width: 100%;
+  padding: 0 15px;
+}
+.zoom-disclaimer > div{
   padding: 10px;
   border-radius: 4px;
-  z-index: 800;
   background: white;
   border: 1px solid #333;
   color: #333;
+  width: 550px; 
+  max-width: 100%; 
+  margin:0 auto; 
+  display:block;
+}
+.zoom-disclaimer > div a{
+  color: blue;
+  font-weight: bold;
 }
 .zoom-disclaimer.hidden{
   display: none;
@@ -152,13 +166,25 @@ body {
 .full-page-disclaimer{
   position: absolute;
   top: 0;
-  left: center;
+  left: 0;
+  z-index: 800;
+  width: 100%;
+  padding: 0 15px;
+}
+.full-page-disclaimer > div{
   padding: 10px;
   border-radius: 4px;
-  z-index: 800;
   background: white;
   border: 1px solid #333;
   color: #333;
+  width: 550px; 
+  max-width: 100%; 
+  margin:0 auto; 
+  display:block;
+}
+.full-page-disclaimer > div a{
+  color: blue;
+  font-weight: bold;
 }
 .full-page-disclaimer.hidden{
   display: none;
